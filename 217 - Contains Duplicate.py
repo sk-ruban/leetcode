@@ -9,4 +9,6 @@ class Solution:
                 seen.add(x)
 
         return False
-    
+
+    def containsDuplicate2(self, nums: List[int]) -> bool:
+        return len(set(nums)) < len(nums)
