@@ -1,15 +1,11 @@
 class Solution:
     def hasCycle(self, head: Optional[ListNode]) -> bool:
-        if not head or not head.next:
-            return False
+        tortoise, hare = head, head
 
-        tortoise = head
-        hare = head.next
-
-        while tortoise != hare:
-            if not hare or not hare.next:
-                return False
+        while hare and hare.next:
             tortoise = tortoise.next
             hare = hare.next.next
+            if tortoise == hare:
+                return True
 
-        return True
+        return False
