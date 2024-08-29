@@ -12,3 +12,15 @@ class Solution:
                 count -= 1
 
         return candidate
+    
+    def majorityElement2(self, nums: List[int]) -> int:
+        map = {}
+        length = len(nums) // 2
+
+        for num in nums:
+            map[num] = map.get(num, 0) + 1
+            if map[num] > length:
+                return num
+            
+    def majorityElement3(self, nums: List[int]) -> int:
+        return sorted(nums)[len(nums) // 2] 
