@@ -3,14 +3,11 @@ class Solution:
         if len(s) != len(t):
             return False
 
-        count = {}
-        for x in s:
-            count[x] = count.get(x, 0) + 1
-        for x in t:
-            count[x] = count.get(x, 0) - 1
+        s_map = {}
+        t_map = {}
 
-        for val in count.values():
-            if val != 0:
-                return False
+        for i in range(len(s)):
+            s_map[s[i]] = s_map.get(s[i], 0) + 1
+            t_map[t[i]] = t_map.get(t[i], 0) + 1
 
-        return True
+        return s_map == t_map
