@@ -9,8 +9,12 @@ class Solution:
             for i in range(l, r):
                 L = accum[i+1] - accum[l]
                 R = accum[r+1] - accum[i+1]
-                if L < R: best = max(best, L + dp(l, i))
-                elif L > R: best = max(best, R + dp(i+1, r))
+                if L < R:
+                    if best >= 2*L: continue
+                    best = max(best, L + dp(l, i))
+                elif L > R:
+                    if best >= 2*R: break
+                    best = max(best, R + dp(i+1, r))
                 else: best = max(best, L + dp(l, i), R + dp(i+1, r))
 
             return best
